@@ -32,7 +32,7 @@ class MothertongueModelTranslate(models.Model):
         # Added by Raw Jam 06/11/2015 to prevent issues when editing these models in
         # the admin, with the non default language in use.
         request = get_current_request()
-        if request.user.is_staff and "HTTP_REFERER" in request.META and "/admin/" in request.META['HTTP_REFERER']:
+        if request.user.is_staff and "PATH_INFO" in request.META and "/admin/" in request.META['PATH_INFO']:
             self._allow_translate = False
 
     def __getattribute__(self, name):
